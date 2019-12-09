@@ -76,6 +76,7 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2A3C3F7A09922D4900E404E9 /* NotificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationController.h; sourceTree = "<group>"; };
 		2A3C3F7B09922D4900E404E9 /* NotificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationController.m; sourceTree = "<group>"; };
+		2AAE7914239EB1900084DFAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		2E282CC70D9AE2B000439D01 /* unison-blob.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = "unison-blob.o"; path = "../unison-blob.o"; sourceTree = "<group>"; };
 		2E282CCC0D9AE2E800439D01 /* ExternalSettings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = ExternalSettings.xcconfig; sourceTree = "<group>"; };
 		44042CB30BE4FC9B00A6BBB2 /* ProgressCell.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ProgressCell.h; sourceTree = "<group>"; };
@@ -150,7 +151,6 @@
 		B5B44C1709DF61A4000DC7AF /* table-right-green.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "table-right-green.tif"; sourceTree = "<group>"; };
 		B5B44C1809DF61A4000DC7AF /* table-skip.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "table-skip.tif"; sourceTree = "<group>"; };
 		B5E03B3809E38B9E0058C7B9 /* rescan.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = rescan.tif; sourceTree = "<group>"; };
-		DE2444D510C294EA007E1546 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -350,13 +350,14 @@
 			};
 			buildConfigurationList = 2A3C3F2C0992245300E404E9 /* Build configuration list for PBXProject "uimacnew" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 1;
 			knownRegions = (
-				English,
-				Japanese,
-				French,
-				German,
+				Base,
+				en,
+				fr,
+				ja,
+				de,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* uimac */;
 			projectDirPath = "";
@@ -468,7 +469,7 @@
 		DE2444D410C294EA007E1546 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				DE2444D510C294EA007E1546 /* English */,
+				2AAE7914239EB1900084DFAD /* Base */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
