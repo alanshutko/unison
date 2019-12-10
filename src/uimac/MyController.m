@@ -200,7 +200,6 @@ static MyController *me; // needed by reloadTable and displayStatus, below
 
 - (IBAction) chooseFont:(id)sender {
   [[NSFontPanel sharedFontPanel] makeKeyAndOrderFront:self];
-  [[NSFontManager sharedFontManager] setDelegate:self];
   fontChangeTarget = sender;
 }
 
