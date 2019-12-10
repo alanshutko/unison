@@ -18,29 +18,38 @@
     [secondRootHost setEditable:YES];
 }
 
+static void displayErrorAlert(NSString *informativeText) {
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert setMessageText:@"Alert"];
+    [alert setInformativeText:informativeText];
+    [alert setAlertStyle:NSAlertStyleCritical];
+    [alert addButtonWithTitle:@"OK"];
+    [alert runModal];
+}
+
 - (BOOL)validatePrefs
 {
     NSString *profileName = [profileNameText stringValue];
     if (profileName == nil || [profileName isEqualTo:@""]) {
         // FIX: should check for already existing names too
-        NSRunAlertPanel(@"Error",@"You must enter a profile name",@"OK",nil,nil);
+        displayErrorAlert(@"You must enter a profile name");
         return NO;
     }
     NSString *firstRoot = [firstRootText stringValue];
     if (firstRoot == nil || [firstRoot isEqualTo:@""]) {
-        NSRunAlertPanel(@"Error",@"You must enter a first root",@"OK",nil,nil);
+        displayErrorAlert(@"You must enter a first root");
         return NO;
     }
     NSString *secondRoot;
     if ([remoteButtonCell state] == NSControlStateValueOn) {
         NSString *user = [secondRootUser stringValue];
         if (user == nil || [user isEqualTo:@""]) {
-            NSRunAlertPanel(@"Error",@"You must enter a user",@"OK",nil,nil);
+            displayErrorAlert(@"You must enter a user");
             return NO;
         }
         NSString *host = [secondRootHost stringValue];
         if (host == nil || [host isEqualTo:@""]) {
-            NSRunAlertPanel(@"Error",@"You must enter a host",@"OK",nil,nil);
+            displayErrorAlert(@"You must enter a host");
             return NO;
         }
         NSString *file = [secondRootText stringValue];
@@ -50,7 +59,7 @@
     else {
         secondRoot = [secondRootText stringValue];
         if (secondRoot == nil || [secondRoot isEqualTo:@""]) {
-            NSRunAlertPanel(@"Error",@"You must enter a second root file",@"OK",nil,nil);
+            displayErrorAlert(@"You must enter a second root file");
             return NO;
         }
     }

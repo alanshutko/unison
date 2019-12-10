@@ -419,9 +419,15 @@ CAMLprim value unisonInit1Complete(value v)
 
                 [self raisePasswordWindow:[prompt getField:0 withType:'S']];
         } @catch (NSException *ex) {
-            NSRunAlertPanel(@"Connection Error", [ex description], @"OK", nil, nil);
-                [self chooseProfiles];
-                return;
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert setMessageText:@"Connection Error"];
+            [alert setInformativeText:[ex description]];
+            [alert setAlertStyle:NSAlertStyleCritical];
+            [alert addButtonWithTitle:@"OK"];
+            [alert runModal];
+
+            [self chooseProfiles];
+            return;
         }
 
         // NSLog(@"Connected.");
@@ -450,8 +456,15 @@ CAMLprim value unisonInit1Complete(value v)
         return;
     }
     if ((long)ocamlCall("iS", "unisonAuthenticityMsg", prompt)) {
-        int i = NSRunAlertPanel(@"New host",prompt,@"Yes",@"No",nil);
-        if (i == NSAlertDefaultReturn) {
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:@"New Host"];
+        [alert setInformativeText:prompt];
+        [alert setAlertStyle:NSAlertStyleCritical];
+        [alert addButtonWithTitle:@"Yes"];
+        [alert addButtonWithTitle:@"No"];
+        NSModalResponse i = [alert runModal];
+
+        if (i == NSAlertFirstButtonReturn) {
                         ocamlCall("x@s", "openConnectionReply", preconn, "yes");
                         prompt = ocamlCall("S@", "openConnectionPrompt", preconn);
             if (!prompt) {
@@ -467,12 +480,12 @@ CAMLprim value unisonInit1Complete(value v)
                 return;
             }
         }
-        if (i == NSAlertAlternateReturn) {
+        if (i == NSAlertSecondButtonReturn) {
                         ocamlCall("x@", "openConnectionCancel", preconn);
             return;
         }
         else {
-            NSLog(@"Unrecognized response '%d' from NSRunAlertPanel",i);
+            NSLog(@"Unrecognized response '%ld' from NSAlert",(long)i);
                         ocamlCall("x@", "openConnectionCancel", preconn);
             return;
         }
@@ -646,7 +659,7 @@ CAMLprim value unisonInit2Complete(value v)
     [_timer invalidate];
 
     switch (returnCode) {
-        case NSAlertAlternateReturn:
+        case NSAlertSecondButtonReturn:
             return;
             break;
 
@@ -661,7 +674,7 @@ CAMLprim value unisonInit2Complete(value v)
     if (_secondsRemaining == 0) {
         [_timer invalidate];
         [[_timeoutAlert window] orderOut: nil];
-        [self alertDidEnd: _timeoutAlert returnCode: NSAlertDefaultReturn contextInfo: nil];
+        [self alertDidEnd: _timeoutAlert returnCode: NSAlertFirstButtonReturn contextInfo: nil];
     } else {
         [_timeoutAlert setMessageText: [NSString stringWithFormat: @"Unison will quit in %lu seconds", _secondsRemaining]];
         _secondsRemaining--;
@@ -671,16 +684,24 @@ CAMLprim value unisonInit2Complete(value v)
 
 - (void)quitIfBatch:(id)ignore
 {
-        if (isBatchSet) {
-          // NSLog(@"Automatically quitting because of -batch");
-                _timeoutAlert = [NSAlert alertWithMessageText: @"" defaultButton: @"Quit" alternateButton: @"Cancel" otherButton: nil informativeTextWithFormat: @""];
+    if (isBatchSet) {
+        // NSLog(@"Automatically quitting because of -batch");
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:@""];
+        [alert setInformativeText:@""];
+        [alert setAlertStyle:NSAlertStyleCritical];
+        [alert addButtonWithTitle:@"Quit"];
+        [alert addButtonWithTitle:@"Cancel"];
+        [alert runModal];
 
-                _secondsRemaining = 10;
+        _timeoutAlert = alert;
 
-                _timer = [NSTimer scheduledTimerWithTimeInterval: 1 target: self selector: @selector(updateCountdown) userInfo: nil repeats: YES];
+        _secondsRemaining = 10;
 
-                [_timeoutAlert beginSheetModalForWindow: mainWindow modalDelegate: self didEndSelector: @selector(alertDidEnd:returnCode:contextInfo:) contextInfo: NULL];
-        }
+        _timer = [NSTimer scheduledTimerWithTimeInterval: 1 target: self selector: @selector(updateCountdown) userInfo: nil repeats: YES];
+
+        [_timeoutAlert beginSheetModalForWindow: mainWindow modalDelegate: self didEndSelector: @selector(alertDidEnd:returnCode:contextInfo:) contextInfo: NULL];
+    }
 }
 
 // TODO: (BCP, 3/2012) Note that the string literal "~/unison.log" here is wrong --
@@ -1192,8 +1213,14 @@ CAMLprim value fatalError(value s)
 }
 
 - (void)fatalError:(NSString *)msg {
-        NSRunAlertPanel(@"Fatal error", msg, @"Exit", nil, nil);
-        exit(1);
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert setMessageText:@"Fatal error"];
+    [alert setInformativeText:msg];
+    [alert setAlertStyle:NSAlertStyleCritical];
+    [alert addButtonWithTitle:@"OK"];
+    [alert runModal];
+
+    exit(1);
 }
 
 /* Returns true if we need to exit, false if we proceed */
@@ -1212,13 +1239,20 @@ CAMLprim value warnPanel(value s)
 }
 
 - (void)warnPanel:(NSString *)msg {
-  int warnVal = NSRunAlertPanel(@"Warning", msg, @"Proceed", @"Exit", nil);
-  NSLog(@"Warning Panel Returned %d",warnVal);
-  if (warnVal == NSAlertAlternateReturn) {
-    shouldExitAfterWarning = YES;
-  } else {
-    shouldExitAfterWarning = FALSE;
-  }
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert setMessageText:@"Warning"];
+    [alert setInformativeText:msg];
+    [alert setAlertStyle:NSAlertStyleCritical];
+    [alert addButtonWithTitle:@"Proceed"];
+    [alert addButtonWithTitle:@"Exit"];
+    NSModalResponse warnVal = [alert runModal];
+
+    NSLog(@"Warning Panel Returned %ld",(long)warnVal);
+    if (warnVal == NSAlertFirstButtonReturn) {
+        shouldExitAfterWarning = YES;
+    } else {
+        shouldExitAfterWarning = FALSE;
+    }
 }
 
 @end
