@@ -245,7 +245,7 @@
                                 <tableColumns>
                                     <tableColumn identifier="profiles" editable="NO" width="317.97698974609375" minWidth="47.477001190185547" maxWidth="1000" id="202">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Profiles">
-                                            <font key="font" metaFont="message" size="11"/>
+                                            <font key="font" metaFont="label" size="11"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.33333299" alpha="1" colorSpace="calibratedWhite"/>
                                         </tableHeaderCell>
@@ -307,7 +307,7 @@
                     <rect key="frame" x="3" y="6" width="582" height="14"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Idle" id="584">
-                        <font key="font" metaFont="message" size="11"/>
+                        <font key="font" metaFont="label" size="11"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -336,7 +336,7 @@
                                         <tableColumns>
                                             <tableColumn identifier="path" editable="NO" width="426" minWidth="27.095703125" maxWidth="1000" id="597">
                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Path">
-                                                    <font key="font" metaFont="message" size="11"/>
+                                                    <font key="font" metaFont="label" size="11"/>
                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                 </tableHeaderCell>
@@ -350,7 +350,7 @@
                                             </tableColumn>
                                             <tableColumn identifier="fileSizeString" editable="NO" width="70" minWidth="70" maxWidth="70" id="596">
                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="Size">
-                                                    <font key="font" metaFont="message" size="11"/>
+                                                    <font key="font" metaFont="label" size="11"/>
                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                 </tableHeaderCell>
@@ -364,7 +364,7 @@
                                             </tableColumn>
                                             <tableColumn identifier="leftIcon" editable="NO" width="16" minWidth="16" maxWidth="16" id="599">
                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="&lt;">
-                                                    <font key="font" metaFont="message" size="11"/>
+                                                    <font key="font" metaFont="label" size="11"/>
                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" white="0.33333299" alpha="1" colorSpace="calibratedWhite"/>
                                                 </tableHeaderCell>
@@ -373,7 +373,7 @@
                                             </tableColumn>
                                             <tableColumn identifier="percentTransferred" editable="NO" width="76.63916015625" minWidth="42.10107421875" maxWidth="100" id="595">
                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="Action">
-                                                    <font key="font" metaFont="message" size="11"/>
+                                                    <font key="font" metaFont="label" size="11"/>
                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                 </tableHeaderCell>
@@ -386,7 +386,7 @@
                                             </tableColumn>
                                             <tableColumn identifier="rightIcon" editable="NO" width="16" minWidth="16" maxWidth="16" id="598">
                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="&gt;">
-                                                    <font key="font" metaFont="message" size="11"/>
+                                                    <font key="font" metaFont="label" size="11"/>
                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                 </tableHeaderCell>
@@ -422,7 +422,7 @@
                                     <rect key="frame" x="2" y="5" width="726" height="74"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <textFieldCell key="cell" controlSize="small" selectable="YES" sendsActionOnEndEditing="YES" title="Label" id="608">
-                                        <font key="font" metaFont="message" size="11"/>
+                                        <font key="font" metaFont="label" size="11"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
