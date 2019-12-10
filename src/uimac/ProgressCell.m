@@ -23,24 +23,18 @@ static NSSize ZeroSize;
         ZeroSize = NSMakeSize(0.0, 0.0);
 
         _ProgressWhite = [NSImage imageNamed: @"ProgressBarWhite.png"];
-        [_ProgressWhite setScalesWhenResized: YES];
 
         _ProgressBlue = [NSImage imageNamed: @"ProgressBarBlue.png"];
-        [_ProgressBlue setScalesWhenResized: YES];
         [_ProgressBlue setSize: startSize];
 
         _ProgressGray = [NSImage imageNamed: @"ProgressBarGray.png"];
-        [_ProgressGray setScalesWhenResized: YES];
         [_ProgressGray setSize: startSize];
 
         _ProgressGreen = [NSImage imageNamed: @"ProgressBarGreen.png"];
-        [_ProgressGreen setScalesWhenResized: YES];
 
         _ProgressLightGreen = [NSImage imageNamed: @"ProgressBarLightGreen.png"];
-        [_ProgressLightGreen setScalesWhenResized: YES];
 
         _ProgressAdvanced = [NSImage imageNamed: @"ProgressBarAdvanced.png"];
-        [_ProgressAdvanced setScalesWhenResized: YES];
 
         _ProgressEndWhite = [NSImage imageNamed: @"ProgressBarEndWhite.png"];
         _ProgressEndBlue = [NSImage imageNamed: @"ProgressBarEndBlue.png"];
