@@ -283,7 +283,7 @@ static MyController *me; // needed by reloadTable and displayStatus, below
                       [[NSUserDefaults standardUserDefaults]
                        stringForKey:@"profileToOpen"]];
   if (index == NSNotFound) {
-    [checkOpenProfile setState:NSOffState];
+    [checkOpenProfile setState:NSControlStateValueOff];
     [profileBox setStringValue:@""];
   } else
     [profileBox selectItemAtIndex:index];
@@ -1017,20 +1017,20 @@ CAMLprim value displayDiffErr(value s)
 
 - (IBAction)raiseCltoolWindow:(id)sender
 {
-  [cltoolPref setState:[[NSUserDefaults standardUserDefaults] boolForKey:@"CheckCltool"] ? NSOffState : NSOnState];
+    [cltoolPref setState:[[NSUserDefaults standardUserDefaults] boolForKey:@"CheckCltool"] ? NSControlStateValueOff : NSControlStateValueOn];
   [self raiseWindow: cltoolWindow];
 }
 
 - (IBAction)cltoolYesButton:(id)sender;
 {
-  [[NSUserDefaults standardUserDefaults] setBool:([cltoolPref state] != NSOnState) forKey:@"CheckCltool"];
+    [[NSUserDefaults standardUserDefaults] setBool:([cltoolPref state] != NSControlStateValueOn) forKey:@"CheckCltool"];
   [self installCommandLineTool:self];
   [cltoolWindow close];
 }
 
 - (IBAction)cltoolNoButton:(id)sender;
 {
-  [[NSUserDefaults standardUserDefaults] setBool:([cltoolPref state] != NSOnState) forKey:@"CheckCltool"];
+    [[NSUserDefaults standardUserDefaults] setBool:([cltoolPref state] != NSControlStateValueOn) forKey:@"CheckCltool"];
   [cltoolWindow close];
 }
 
